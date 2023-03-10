@@ -1,0 +1,27 @@
+{% load static %}
+{% load footer_tags %}
+
+<div class="footer">
+
+  <div class="in_footer">
+
+    {% get_partners as footer %}
+
+      {% for el in footer %}
+          <div class="box_footer">
+            <div class="in_box_footer">
+              <a href="{{ el.url }}"></a>
+              <img src="{{ el.icon.url }}" alt="">
+            </div>
+            <div class="text_box_footer">
+              <p>{{ el.name }}</p>
+            </div>
+          </div>
+      {% endfor %}
+
+    <div class="in_in_footer">
+      <h4>© 2023 Andrew Volk. All Rights Reserved.</h4>
+    </div>
+
+  </div>
+</div>

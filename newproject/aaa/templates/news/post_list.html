@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block content %}
+{% load news_tags %}
+
+
+    <div class="categories">
+        {% get_categories as cats %}
+
+        {% if cat_selected == 0 %}
+                <a>Все категории</a>
+        {% else %}
+                <a href="{% url 'post_list' %}">Все категории</a>
+        {% endif %}
+
+        {% for el in cats %}
+          <a href="{{ el.get_absolute_url }}">{{ el.name }}</a>
+        {% endfor %}
+
+        {% for el in menu %}
+            <a href="{{ el.url_name }}">{{ el.name }}</a>
+        {% endfor %}
+            <a href="{% url 'post_create' %}">Добавить пост</a>
+    </div>
+
+
+    {% for el in object_list %}
+
+     <a href="{{ el.get_absolute_url }}">
+         <div class="box_news">
+            <div class="box_news_img">
+              <img src="{{ el.photo.url }}" width="100%" alt="">
+            </div>
+            <div class="box_news_text">
+              <div class="box_news_text_title">
+                <h3>{{ el.article }}</h3>
+              </div>
+              <div class="box_news_text_content">
+                <p>{{ el.content|truncatewords:15 }}</p>
+              </div>
+              <div class="box_news_text_data_category">
+                <h4> Категория:{{ el.cat }} Публикация:{{ el.time_create }} </h4>
+              </div>
+            </div>
+          </div>
+        </a>
+
+	{% endfor %}
+
+{% endblock %}
+
+    {% block page %}
+    {% include 'include/pagination.html' %}
+    {% endblock %}

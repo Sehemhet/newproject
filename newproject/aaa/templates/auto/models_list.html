@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ brand.model }}
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+      <div class="brand_model">
+          <h3>{{ brand.model }}</h3>
+      </div>
+
+{% for car in object_list %}
+
+              <a class="model_a" href="{{car.get_absolute_url}}">
+                  <div class="model_box">
+                      <img src="{{ car.photo.url }}" alt="">
+                      <h3>{{ car.model }}</h3>
+                      <h4>{{ car.year }}</h4>
+                  </div>
+              </a>
+
+{% endfor %}
+
+
+{% endblock %}
+
+    {% block page %}
+    {% include 'include/pagination.html' %}
+    {% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% load static %}
+{% block content %}
+
+<div class="in_page">
+    {% for brand in object_list %}
+          <div class="box_brand">
+            <div class="in_box_brand" enctype="multipart/form-data">
+              <a href="{{ brand.get_absolute_url }}"></a>
+              <img src="{{ brand.logo.url }}" alt="">
+            </div>
+            <div class="text_box_brand">
+              <p>{{ brand.brand }}</p>
+            </div>
+          </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+    {% block page %}
+    {% include 'include/pagination.html' %}
+    {% endblock %}

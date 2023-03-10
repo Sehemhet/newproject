@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block content %}
+
+      <div class="brand_model">
+          <h3>{{ title }}</h3>
+      </div>
+
+        {% for car in model %}
+
+        <a class="model_a" href="{{ car.get_absolute_url }}">
+          <div class="model_box">
+              <img src="{{ car.photo.url }}" alt="">
+              <h3>{{ car.model }}</h3>
+              <h4>{{ car.year }}</h4>
+          </div>
+        </a>
+
+        {% endfor %}
+
+{% endblock %}

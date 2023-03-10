@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+      <a class='in_section' href="{% url 'auto' %}">
+        <section>
+          <img width="100%" src="{% static './img/autoshow.jpg' %}" alt="">
+          <div class="in_section_div">
+            <h1>Автосалон</h1>
+          </div>
+        </section>
+      </a>
+
+      <a class='in_section' href="{% url 'map' %}">
+        <section>
+          <img width="100%" src="{% static './img/map2.jpg' %}" alt="">
+          <div class="in_section_div">
+            <h1>Карта</h1>
+          </div>
+        </section>
+      </a>
+
+      <a class='in_section' href="./autoshow.html">
+        <section>
+          <img width="100%" src="{% static './img/race.jpeg' %}" alt="">
+          <div class="in_section_div">
+            <h1>Гонка</h1>
+          </div>
+        </section>
+      </a>
+
+      <a class='in_section' href="{% url 'garage' %}">
+        <section>
+          <img width="100%" src="{% static './img/garage.jpg' %}" alt="">
+          <div class="in_section_div">
+            <h1>Гараж</h1>
+          </div>
+        </section>
+      </a>
+
+      <a class='in_section' href="./autoshow.html">
+        <section>
+          <img width="100%" src="{% static './img/modern.jpg' %}" alt="">
+          <div class="in_section_div">
+            <h1>Модернизация</h1>
+          </div>
+        </section>
+      </a>
+
+      <a class='in_section' href="./autoshow.html">
+        <section>
+          <img width="100%" src="{% static './img/tuning.jpg' %}" alt="">
+          <div class="in_section_div">
+            <h1>Тюнинг</h1>
+          </div>
+        </section>
+      </a>
+
+{% endblock %}
