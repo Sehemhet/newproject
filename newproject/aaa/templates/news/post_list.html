@@ -3,11 +3,10 @@
 {% block title %}
 {{ title }}
 {% endblock %}
-{% block content %}
 {% load news_tags %}
 
-
-    <div class="categories">
+{% block article %}
+    <div class="top_title">
         {% get_categories as cats %}
 
         {% if cat_selected == 0 %}
@@ -23,8 +22,16 @@
         {% for el in menu %}
             <a href="{{ el.url_name }}">{{ el.name }}</a>
         {% endfor %}
+
+        {% if request.user.is_authenticated %}
             <a href="{% url 'post_create' %}">Добавить пост</a>
+        {% endif %}
+
+
     </div>
+{% endblock %}
+
+{% block content %}
 
 
     {% for el in object_list %}

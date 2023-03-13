@@ -1,6 +1,6 @@
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
+from django.template.response import TemplateResponse
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from b1.forms import RegisterUserForm, LoginUserForm
@@ -12,7 +12,7 @@ def home_def(request):
     data = {
         'title':'Главная страница'
     }
-    return render(request, 'b1/index.html', data)
+    return TemplateResponse(request, 'b1/index.html', data)
 
 class RegisterUser(CreateView):
     form_class = RegisterUserForm
@@ -22,7 +22,6 @@ class RegisterUser(CreateView):
 
     def get_context_data(self, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['cat_selected'] = 0
         return context
 
     def form_valid(self, form):
@@ -38,7 +37,6 @@ class LoginUser(LoginView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['cat_selected'] = 0
         return context
 
     def get_success_url(self):

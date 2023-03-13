@@ -1,6 +1,3 @@
-from django.db.models import Count
-from django.http import Http404
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -38,16 +35,13 @@ class post_category(ListView):
 class post_detail(DetailView):
     model = Post
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
 
 class post_create(LoginRequiredMixin, CreateView):
     form_class = AddPostForm
     template_name = 'news/post_create.html'
     success_url = reverse_lazy('post_list')
-    login_url = reverse_lazy('home')
-    raise_exception = True
+    login_url = reverse_lazy('login')
     extra_context = {'title': 'Добавление статьи'}
+
 
 # Create your views here.

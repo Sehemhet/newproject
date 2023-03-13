@@ -4,15 +4,23 @@
 {% endblock %}
 {% block content %}
 
-      <div class="brand_model">
+      <div class="top_title">
         <h3>Добавить автомобиль</h3>
       </div>
 
-          <form action="{% url 'car_create' %}"  method="post" enctype="multipart/form-data">
+          <form action="{% url 'newcar' %}"  method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-              {{ form.non_field_errors }}
+<!--              {{ form.non_field_errors }}-->
               <div class="register">
 
+<!--                  {{ form.as_p }}-->
+
+                  {% for f in form %}
+                      {{ f.id_for_label }}
+                      {{ f.label }}
+                      {{ f }}
+                      {{ f.errors }}
+                  {% endfor %}
 
         <div class="car_form">
             <input type="text" name="text" placeholder="Марка">
@@ -27,15 +35,6 @@
         </div>
 
         <div class="car_form">
-            {{form.brand}}
-            {{form.model}}
-            {{form.year}}
-            {{form.level}}
-            {{form.type_class}}
-            {{form.type_drive}}
-            {{form.rarity}}
-            {{form.price}}
-
             <input type="text" name="text" placeholder="Редкость">
             <input type="text" name="text" placeholder="Цена">
         </div>

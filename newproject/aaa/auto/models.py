@@ -14,25 +14,25 @@ class Cars(models.Model):
 	rarity = models.ForeignKey('TypeRarity', on_delete=models.PROTECT, verbose_name='Редкость')
 	type_engine = models.ForeignKey('TypeEngine', on_delete=models.PROTECT, verbose_name='Тип двигателя')
 	type_class = models.ForeignKey('TypeClass', on_delete=models.PROTECT, verbose_name='Класс')
-	price = models.PositiveSmallIntegerField(blank=True, default=True, verbose_name='Цена')
-	speed = models.PositiveSmallIntegerField(blank=True, default=True, verbose_name='Скорость')
-	control = models.PositiveSmallIntegerField(blank=True, default=True, verbose_name='Управление')
-	acceleration = models.PositiveSmallIntegerField(blank=True, default=True, verbose_name='Ускорение')
-	start = models.PositiveSmallIntegerField(blank=True, default=True, verbose_name='Разгон')
-	brake = models.PositiveSmallIntegerField(blank=True, default=True, verbose_name='Торможение')
-	kW = models.PositiveSmallIntegerField(blank=True, default=True, verbose_name='кВт')
-	Hp = models.PositiveSmallIntegerField(blank=True, default=True, verbose_name='Л.с.')
-	Hm = models.PositiveSmallIntegerField(blank=True, default=True, verbose_name='Н/м')
-	weight = models.PositiveSmallIntegerField(blank=True, default=True, verbose_name='Вес')
-	center = models.PositiveSmallIntegerField(blank=True, default=True, verbose_name='Фронтальная нагрузка')
-	volume = models.PositiveSmallIntegerField(blank=True, default=True, verbose_name='Объем')
-	top_speed = models.PositiveSmallIntegerField(blank=True, default=True, verbose_name='макс. скорость')
-	start097 = models.PositiveSmallIntegerField(blank=True, default=True, verbose_name='0-97км/ч')
-	start161 = models.PositiveSmallIntegerField(blank=True, default=True, verbose_name='0-161км/ч')
-	brake097 = models.PositiveSmallIntegerField(blank=True, default=True, verbose_name='97-0 км/ч')
-	brake161 = models.PositiveSmallIntegerField(blank=True, default=True, verbose_name='161-0 км/ч')
-	load97 = models.PositiveSmallIntegerField(blank=True, default=True, verbose_name='нагрузка 97 км/ч')
-	load193 = models.PositiveSmallIntegerField(blank=True, default=True, verbose_name='нагрузка 193 км/ч')
+	price = models.PositiveSmallIntegerField(blank=True, default=1, verbose_name='Цена')
+	speed = models.PositiveSmallIntegerField(blank=True, default=11, verbose_name='Скорость')
+	control = models.PositiveSmallIntegerField(blank=True, default=11, verbose_name='Управление')
+	acceleration = models.PositiveSmallIntegerField(blank=True, default=11, verbose_name='Ускорение')
+	start = models.PositiveSmallIntegerField(blank=True, default=11, verbose_name='Разгон')
+	brake = models.PositiveSmallIntegerField(blank=True, default=11, verbose_name='Торможение')
+	kW = models.PositiveSmallIntegerField(blank=True, default=11, verbose_name='кВт')
+	Hp = models.PositiveSmallIntegerField(blank=True, default=11, verbose_name='Л.с.')
+	Hm = models.PositiveSmallIntegerField(blank=True, default=11, verbose_name='Н/м')
+	weight = models.PositiveSmallIntegerField(blank=True, default=11, verbose_name='Вес')
+	center = models.PositiveSmallIntegerField(blank=True, default=11, verbose_name='Фронтальная нагрузка')
+	volume = models.PositiveSmallIntegerField(blank=True, default=11, verbose_name='Объем')
+	top_speed = models.PositiveSmallIntegerField(blank=True, default=1, verbose_name='макс. скорость')
+	start097 = models.PositiveSmallIntegerField(blank=True, default=1, verbose_name='0-97км/ч')
+	start161 = models.PositiveSmallIntegerField(blank=True, default=1, verbose_name='0-161км/ч')
+	brake097 = models.PositiveSmallIntegerField(blank=True, default=1, verbose_name='97-0 км/ч')
+	brake161 = models.PositiveSmallIntegerField(blank=True, default=1, verbose_name='161-0 км/ч')
+	load97 = models.PositiveSmallIntegerField(blank=True, default=1, verbose_name='нагрузка 97 км/ч')
+	load193 = models.PositiveSmallIntegerField(blank=True, default=1, verbose_name='нагрузка 193 км/ч')
 	photo = models.ImageField(upload_to='cars/%Y/%m/%d', verbose_name='Фото', null=True, blank=True)
 
 	def __str__(self):
@@ -40,7 +40,7 @@ class Cars(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('cars', kwargs={
-			'slug_car': self.slug
+			'slug': self.slug
 		})
 
 	def get_absolute_image(self):
@@ -57,11 +57,11 @@ class Brands(models.Model):
 	logo = models.ImageField(upload_to='logo', verbose_name='Логотип')
 
 	def __str__(self):
-		return self.brand
+		return self.slug
 
 	def get_absolute_url(self):
 		return reverse('brands', kwargs={
-			'slug_brand': self.slug
+			'slug': self.slug
 		})
 
 	class Meta:

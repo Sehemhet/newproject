@@ -1,24 +1,34 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block title %}
 {{ title }}
 {% endblock %}
-{% block content %}
 
-      <div class="brand_model">
+    {% block article %}
+      <div class="top_title">
           <h3>{{ title }}</h3>
       </div>
+    {% endblock %}
 
-        {% for car in model %}
+{% block content %}
 
-        <a class="model_a" href="{{ car.get_absolute_url }}">
-          <div class="model_box">
-              <img src="{{ car.photo.url }}" alt="">
-              <h3>{{ car.model }}</h3>
-              <h4>{{ car.year }}</h4>
-          </div>
-        </a>
 
-        {% endfor %}
+{% for car in object_list %}
+
+              <a class="car_a" href="{{car.get_absolute_url}}">
+                  <div class="car_box">
+                      <img src="{{ car.photo.url }}" alt="">
+                      <h3>{{ car.model }}</h3>
+                      <h4>{{ car.year }}</h4>
+                  </div>
+              </a>
+
+{% endfor %}
+
 
 {% endblock %}
+
+    {% block page %}
+    {% include 'include/pagination.html' %}
+    {% endblock %}
