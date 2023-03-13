@@ -11,16 +11,16 @@
 {% endblock %}
 
 {% block content %}
-          <form class="news_add" action="{% url 'post_create' %}"  method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-              {{ form.non_field_errors }}
+<form class="news_add" action="{% url 'post_create' %}"  method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{ form.non_field_errors }}
 
-                  <h3>{{ form.article }}</h3>
-                  <h3>{{ form.slug }}</h3>
-                  <p>{{ form.content }}</p>
-                  <h3>{{ form.cat }}</h3>
-                  <h3>{{ form.photo }}</h3>
+  <h3>{{ form.article }}</h3>
+  <h3>{{ form.slug }}</h3>
+  <p>{{ form.content }}</p>
+  <h3>{{ form.cat }}</h3>
+  <h3>{{ form.photo }}</h3>
 
-                <input type="submit" name="submit" value="Добавить">
-        </form>
+<input type="submit" name="submit" value="Добавить">
+</form>
 {% endblock %}

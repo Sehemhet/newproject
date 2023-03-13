@@ -4,76 +4,62 @@
 {% endblock %}
 {% block content %}
 
-      <div class="top_title">
-        <h3>Добавить автомобиль</h3>
-      </div>
+<div class="top_title">
+<h3>Добавить автомобиль</h3>
+</div>
 
-          <form action="{% url 'newcar' %}"  method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-<!--              {{ form.non_field_errors }}-->
-              <div class="register">
+<form class='register' action="{% url 'newcar' %}"  method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{ form.non_field_errors }}
+<div class="car_form">
+{{ form.brand }}
+{{ form.model }}
+{{ form.year }}
+{{ form.slug }}
 
-<!--                  {{ form.as_p }}-->
+{{ form.level }}
+{{ form.rarity }}
+{{ form.country }}
+{{ form.price }}
+</div>
 
-                  {% for f in form %}
-                      {{ f.id_for_label }}
-                      {{ f.label }}
-                      {{ f }}
-                      {{ f.errors }}
-                  {% endfor %}
+<div class="car_form">
+{{ form.speed }}
+{{ form.control }}
+{{ form.acceleration }}
+{{ form.start }}
+{{ form.brake }}
+{{ form.type_class }}
+{{ form.type_engine }}
+{{ form.type_drive }}
+</div>
 
-        <div class="car_form">
-            <input type="text" name="text" placeholder="Марка">
-            <input type="text" name="text" placeholder="Модель">
-            <input type="text" name="text" placeholder="Год">
+<div class="car_form">
+{{ form.kW }}
+{{ form.Hp }}
+{{ form.Hm }}
+{{ form.weight }}
+{{ form.center }}
+{{ form.volume }}
+</div>
 
-            <input type="text" name="text" placeholder="Класс">
-            <input type="text" name="text" placeholder="Уровень">
-            <input type="text" name="text" placeholder="Привод">
-            <input type="text" name="text" placeholder="Редкость">
-            <input type="text" name="text" placeholder="Цена">
-        </div>
+<div class="car_form">
+{{ form.top_speed }}
+{{ form.start097 }}
+{{ form.start161 }}
+{{ form.brake097 }}
+{{ form.brake161 }}
+{{ form.load97 }}
+{{ form.load193 }}
+</div>
 
-        <div class="car_form">
-            <input type="text" name="text" placeholder="Редкость">
-            <input type="text" name="text" placeholder="Цена">
-        </div>
+<div class="page_box">
+{{ form.photo }}
+</div>
 
-        <div class="car_form">
-            <input type="text" name="text" placeholder="Скорость">
-            <input type="text" name="text" placeholder="Управление">
-            <input type="text" name="text" placeholder="Ускорение">
-            <input type="text" name="text" placeholder="Разгон">
-            <input type="text" name="text" placeholder="Торможение">
-        </div>
-        <div class="car_form">
-            <input type="text" name="text" placeholder="Мощность кВт">
-            <input type="text" name="text" placeholder="Мощность Л.с.">
-            <input type="text" name="text" placeholder="Крутящий момент">
-            <input type="text" name="text" placeholder="Вес">
-            <input type="text" name="text" placeholder="Фронтальная нагрузка">
-            <input type="text" name="text" placeholder="Объем двигателя">
-        </div>
-        <div class="car_form">
-            <input type="text" name="text" placeholder="Скорость">
-            <input type="text" name="text" placeholder="Ускорение 0-97">
-            <input type="text" name="text" placeholder="Ускорение 0-161">
-            <input type="text" name="text" placeholder="Торможение 97-0">
-            <input type="text" name="text" placeholder="Торможение 161-0">
-            <input type="text" name="text" placeholder="нагрузка 97км/ч">
-            <input type="text" name="text" placeholder="нагрузка 193км/ч">
-        </div>
-            <div class="field__wrapper">
-               <input name="file" type="file" name="file" id="field__file-2" class="field field__file" multiple>
-               <label class="field__file-wrapper" for="field__file-2">
-                 <div class="field__file-fake">Файл не вбран</div>
-                 <div class="field__file-button">Выбрать</div>
-               </label>
-            </div>
-
-            <input type="submit" name="submit" value="Добавить">
-
-        </div>
-        </form>
+<div class="page_box">
+<input type="submit" name="submit" value="Добавить">
+</div>
+</form>
 
 {% endblock %}
