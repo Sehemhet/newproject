@@ -2,21 +2,21 @@
 {% block title %}
 {{ title }}
 {% endblock %}
+
+{% block article %}
+      <div class="top_title">
+          <h3>{{ title }}</h3>
+      </div>
+{% endblock %}
+
 {% block content %}
 
-
-      <div class="brand_model">
-        <h3>Авторизация</h3>
-      </div>
-
-      <form class="" method="post">
-          <div class="register">
-              {% csrf_token %}
-              {{ form.non_field_errors }}
-                  {{ form.username }}
-                  {{ form.password }}
-                <input type="submit" name="submit" value="Войти">
-          </div>
+      <form class="register" method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+            {{ form.username }}
+            {{ form.password }}
+            <input type="submit" name="submit" value="Войти">
       </form>
 
 {% endblock %}

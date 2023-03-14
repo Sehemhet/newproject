@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-{{ title }}
+{{ post.article }}
 {% endblock %}
-{% block content %}
 
-      <div class="brand_model">
+{% block article %}
+      <div class="top_title">
         <h3>{{ post.article }}</h3>
       </div>
+{% endblock %}
 
+{% block content %}
         <div class="news_detail_img">
           <img src="{{ post.photo.url }}" alt="">
         </div>
@@ -17,5 +19,4 @@
           <p>{{ post.content|linebreaksbr }}</p>
           <h4>{{ post.time_create }}</h4>
         </div>
-
 {% endblock %}

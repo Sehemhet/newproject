@@ -5,8 +5,18 @@
 {{ title }}
 {% endblock %}
 
-{% block content %}
+{% block article %}
+      <div class="top_title">
+          <h3>{{ title }}</h3>
+                    {% if request.user.is_authenticated %}
+          <h3><a href="{% url 'newcar' %}"> Добавить авто </a></h3>
+          {% endif %}
+      </div>
 
+
+{% endblock %}
+
+{% block content %}
       <a class='in_section' href="{% url 'auto' %}">
         <section>
           <img width="100%" src="{% static './img/autoshow.jpg' %}" alt="">
@@ -15,24 +25,7 @@
           </div>
         </section>
       </a>
-
-      <a class='in_section' href="{% url 'map' %}">
-        <section>
-          <img width="100%" src="{% static './img/map2.jpg' %}" alt="">
-          <div class="in_section_div">
-            <h1>Карта</h1>
-          </div>
-        </section>
-      </a>
-
-      <a class='in_section' href="./autoshow.html">
-        <section>
-          <img width="100%" src="{% static './img/race.jpeg' %}" alt="">
-          <div class="in_section_div">
-            <h1>Гонка</h1>
-          </div>
-        </section>
-      </a>
+                    {% if request.user.is_authenticated %}
 
       <a class='in_section' href="{% url 'garage' %}">
         <section>
@@ -43,7 +36,27 @@
         </section>
       </a>
 
-      <a class='in_section' href="./autoshow.html">
+                    {% endif %}
+
+      <a class='in_section' href="{% url 'map' %}">
+        <section>
+          <img width="100%" src="{% static './img/map2.jpg' %}" alt="">
+          <div class="in_section_div">
+            <h1>Карта</h1>
+          </div>
+        </section>
+      </a>
+
+      <a class='in_section' href="#">
+        <section>
+          <img width="100%" src="{% static './img/race.jpeg' %}" alt="">
+          <div class="in_section_div">
+            <h1>Гонка</h1>
+          </div>
+        </section>
+      </a>
+
+      <a class='in_section' href="#">
         <section>
           <img width="100%" src="{% static './img/modern.jpg' %}" alt="">
           <div class="in_section_div">
@@ -52,7 +65,7 @@
         </section>
       </a>
 
-      <a class='in_section' href="./autoshow.html">
+      <a class='in_section' href="#">
         <section>
           <img width="100%" src="{% static './img/tuning.jpg' %}" alt="">
           <div class="in_section_div">

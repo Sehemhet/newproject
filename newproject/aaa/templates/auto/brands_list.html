@@ -3,22 +3,24 @@
 {{ title }}
 {% endblock %}
 {% load static %}
+
+{% block article %}
+
+      <div class="top_title">
+                    <h3>{{ title }}</h3>
+      </div>
+
+{% endblock %}
+
 {% block content %}
-
-<div class="in_page">
-    {% for brand in object_list %}
-          <div class="box_brand">
-            <div class="in_box_brand" enctype="multipart/form-data">
-              <a href="{{ brand.get_absolute_url }}"></a>
-              <img src="{{ brand.logo.url }}" alt="">
-            </div>
-            <div class="text_box_brand">
-              <p>{{ brand.brand }}</p>
-            </div>
-          </div>
+ {% for brand in object_list %}
+          <a class="car_a" href="{{ brand.get_absolute_url }}">
+              <div class="car_box">
+                  <img src="{{ brand.logo.url }}" alt="">
+                  <h4>{{ brand.brand }}</h4>
+              </div>
+          </a>
     {% endfor %}
-</div>
-
 {% endblock %}
 
     {% block page %}

@@ -2,13 +2,14 @@
 {% block title %}
 {{ car.brand }} {{ car.model }} {{ car.year }}
 {% endblock %}
-{% block content %}
 
-
-      <div class="brand_model">
+{% block article %}
+      <div class="top_title">
           <h3>{{ car.brand }} {{ car.model }} {{ car.year }}</h3>
       </div>
+{% endblock %}
 
+{% block content %}
       <div class="box_car">
           <img src="{{ car.photo.url }}" alt="">
       </div>
@@ -31,7 +32,6 @@
       <div class="box_table">
 
         <div class="table">
-          <h3>Производительность</h3>
           <table>
             <tr>
               <td>Скорость</td><td>{{car.speed}}</td>
