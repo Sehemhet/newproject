@@ -1,6 +1,9 @@
 import os
 from django.urls import reverse
 from django.db import models
+from django.utils.text import slugify
+import pytils.translit
+
 
 class Cars(models.Model):
 	brand = models.ForeignKey('Brands', on_delete=models.PROTECT, verbose_name='Бренд')
@@ -44,6 +47,10 @@ class Cars(models.Model):
 		return reverse('cars', kwargs={
 			'slug': self.slug
 		})
+
+	# def save(self, *args, **kwargs):
+	# 	self.slug = pytils.translit.translify(slugify(self.model, self.year, allow_unicode=True))
+	# 	super().save(*args, **kwargs)
 
 	def get_absolute_image(self):
 		return os.path.join('/media/logo', self.slug)

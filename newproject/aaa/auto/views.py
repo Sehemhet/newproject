@@ -1,7 +1,9 @@
+import form as form
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
+from django.forms import forms
 
 from .forms import AddCarsForm
 from .models import Cars, Brands
@@ -40,5 +42,6 @@ class car_create(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('garage')
     login_url = reverse_lazy('login')
     extra_context = {'title': 'Добавление авто'}
+
 
 # Create your views here.

@@ -62,6 +62,7 @@ urlpatterns = [
     path('auto/', include(auto_url)),
     path('newcar/', auto_views.car_create.as_view(), name='newcar'),
     path('captcha/', include('captcha.urls')),
+    path('search/', b1_views.Search.as_view(), name='search'),
 ]
 
 if settings.DEBUG:

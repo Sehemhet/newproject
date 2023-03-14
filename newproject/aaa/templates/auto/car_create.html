@@ -3,6 +3,7 @@
 {{ title }}
 {% endblock %}
 {% block content %}
+{% load static %}
 
 <div class="top_title">
 <h3>Добавить автомобиль</h3>
@@ -11,12 +12,31 @@
 <form class='register' action="{% url 'newcar' %}"  method="post" enctype="multipart/form-data">
 {% csrf_token %}
 {{ form.non_field_errors }}
+
+<div class="car_form">
+{{ form.top_speed }}
+{{ form.start097 }}
+{{ form.start161 }}
+{{ form.brake097 }}
+{{ form.brake161 }}
+{{ form.load97 }}
+{{ form.load193 }}
+</div>
+
+<div class="car_form">
+{{ form.kW }}
+{{ form.Hp }}
+{{ form.Hm }}
+{{ form.weight }}
+{{ form.center }}
+{{ form.volume }}
+</div>
+
 <div class="car_form">
 {{ form.brand }}
 {{ form.model }}
 {{ form.year }}
 {{ form.slug }}
-
 {{ form.level }}
 {{ form.rarity }}
 {{ form.country }}
@@ -32,25 +52,6 @@
 {{ form.type_class }}
 {{ form.type_engine }}
 {{ form.type_drive }}
-</div>
-
-<div class="car_form">
-{{ form.kW }}
-{{ form.Hp }}
-{{ form.Hm }}
-{{ form.weight }}
-{{ form.center }}
-{{ form.volume }}
-</div>
-
-<div class="car_form">
-{{ form.top_speed }}
-{{ form.start097 }}
-{{ form.start161 }}
-{{ form.brake097 }}
-{{ form.brake161 }}
-{{ form.load97 }}
-{{ form.load193 }}
 </div>
 
 <div class="page_box">

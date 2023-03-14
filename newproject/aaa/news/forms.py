@@ -2,7 +2,7 @@ from django import forms
 from django.forms import TextInput, Textarea, Select, FileInput
 
 from .models import *
-# from captcha.fields import CaptchaField
+from captcha.fields import CaptchaField
 class AddPostForm(forms.ModelForm):
     # captcha = CaptchaField()
     def __init__(self, *args, **kwargs):

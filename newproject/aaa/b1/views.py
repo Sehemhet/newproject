@@ -2,10 +2,11 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.template.response import TemplateResponse
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 from b1.forms import RegisterUserForm, LoginUserForm
 from b1.models import *
 from django.contrib.auth import logout, login
+from auto.models import Brands
 
 
 def home_def(request):
@@ -45,5 +46,17 @@ class LoginUser(LoginView):
 def logout_user(request):
     logout(request)
     return redirect('login')
+
+class Search(ListView):
+    model = Brands
+    template_name = 'auto/brands_list.html'
+
+    def get_queryset(self):
+        return Brands.objects.filter(brand__icontains=self.request.GET.get('q'))
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Марки'
+        return context
 
 # Create your views here.
